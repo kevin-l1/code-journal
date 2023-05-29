@@ -2,6 +2,10 @@
   display: none !important;
 }
 
+header {
+  padding-left: 1.5rem;
+}
+
 .container {
   max-width: 575px;
   margin: 0 auto;
@@ -11,6 +15,7 @@
 .row {
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem 0;
 }
 
 .column-full,
@@ -31,4 +36,28 @@
   .column-half {
     width: 50%;
   }
+}
+
+@media screen and (width > 50%) {
+  .title,
+  .photo {
+    width: 50%;
+  }
+}
+
+.photo,
+.title,
+.url,
+.notes {
+  display: flex;
+  flex-direction: column;
+}
+
+.save {
+  display: flex;
+  justify-content: end;
+}
+
+label {
+  padding-bottom: 0.5rem;
 }
