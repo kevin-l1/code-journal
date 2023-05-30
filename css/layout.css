@@ -2,6 +2,14 @@
   display: none !important;
 }
 
+header {
+  padding: 1rem 0;
+}
+
+.new-entry {
+  margin: 1rem 0;
+}
+
 .container {
   max-width: 575px;
   margin: 0 auto;
@@ -23,6 +31,14 @@
     max-width: 900px;
   }
 
+  header {
+    padding-left: 1.5rem;
+  }
+
+  .new-entry {
+    padding-left: 0.7rem;
+  }
+
   .column-full,
   .column-half {
     padding: 0 0.75rem;
@@ -31,4 +47,34 @@
   .column-half {
     width: 50%;
   }
+}
+
+.photo,
+.title,
+.url,
+.notes {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo,
+.title,
+.url,
+.notes,
+.save {
+  padding-bottom: 1.5rem;
+}
+
+label {
+  padding-bottom: 0.5rem;
+}
+
+.save {
+  display: flex;
+  justify-content: end;
+}
+
+h1,
+h4 {
+  margin: 0;
 }
