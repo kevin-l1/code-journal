@@ -12,13 +12,13 @@ function submitContent(event) {
   const $titleValue = $form.elements.title.value;
   const $urlValue = $form.elements.url.value;
   const $notesValue = $form.elements.notes.value;
-  const $formContent = {
+  const formContent = {
     entryId: data.nextEntryId,
     title: $titleValue,
     url: $urlValue,
     notes: $notesValue
   };
-  data.entries.push($formContent);
+  data.entries.unshift(formContent);
   data.nextEntryId++;
   $form.reset();
   $img.src = 'images/placeholder-image-square.jpg';
