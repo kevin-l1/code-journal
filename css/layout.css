@@ -78,3 +78,14 @@ h1,
 h4 {
   margin: 0;
 }
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 1rem 0;
+}

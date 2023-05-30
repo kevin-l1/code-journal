@@ -25,3 +25,45 @@ function submitContent(event) {
 }
 
 $form.addEventListener('submit', submitContent);
+
+function renderEntry(entry) {
+  const $ulContainer = document.createElement('ul');
+  const $liPic = document.createElement('li');
+  const $liTitle = document.createElement('li');
+  const $liNotes = document.createElement('li');
+  const $liUl = document.createElement('ul');
+  const $pic = document.createElement('img');
+  const $h1 = document.createElement('h1');
+  const $p = document.createElement('p');
+
+  $h1.innerHTML = entry.title;
+  $liNotes.innerHTML = entry.notes;
+
+  $liPic.setAttribute('class', 'column-full column-half');
+  $liTitle.setAttribute('class', 'column-full column-half');
+  $pic.setAttribute('src', entry.url);
+  $pic.setAttribute('class', 'entry-pic');
+  $h1.setAttribute('class', 'entry-name');
+  $p.setAttribute('class', 'entry-notes');
+
+  $ulContainer.appendChild($liPic);
+  $ulContainer.appendChild($liTitle);
+  $liPic.appendChild($pic);
+  $liTitle.appendChild($h1);
+  $liTitle.appendChild($liUl);
+  $liUl.appendChild($liNotes);
+  $liNotes.appendChild($p);
+
+  return $ulContainer;
+}
+
+const $row = document.querySelector('.saved-entry');
+
+document.addEventListener('DOMContentLoaded', () => {
+  for (let i = 0; i < data.entries.length; i++) {
+    $row.append(renderEntry(data.entries[i]));
+  }
+});
+
+// https://static1.srcdn.com/wordpress/wp-content/uploads/2023/03/honkai-star-rail-kafka-how-to-get.jpg
+// http://localhost:5500/index.html

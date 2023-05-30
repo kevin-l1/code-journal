@@ -20,7 +20,8 @@ textarea:focus {
 
 h1,
 h4,
-label {
+label,
+p {
   font-family: "Proza Libre", sans-serif;
 }
 
@@ -44,4 +45,14 @@ label {
   border-radius: 5px;
   width: 4rem;
   height: 2rem;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+img {
+  object-fit: contain;
+  max-width: 100%;
 }
