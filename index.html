@@ -29,20 +29,24 @@
         <div class="row">
           <div class="photo column-full column-half">
             <label for="photo">New Entry</label>
-            <input type="image" id="photo" src="images/placeholder-image-square.jpg" alt="Placeholder">
+            <input type="image" id="photo" name="photo" src="images/placeholder-image-square.jpg" alt="Placeholder">
           </div>
-          <div class="title column-full column-half">
-            <label for="title">Title</label>
-            <input type="text" id="title" required="true">
-            <label for="photo-url">Photo URL</label>
-            <input type="text" id="photo-url" required="true">
+          <div class="entry-form column-full column-half">
+            <div class="title">
+              <label for="title">Title</label>
+              <input type="text" id="title" required="true">
+            </div>
+            <div class="url">
+              <label for="photo-url">Photo URL</label>
+              <input type="url" id="photo-url" name="url" required="true">
+            </div>
           </div>
         </div>
 
         <div class="row">
           <div class="notes column-full">
             <label for="notes">Notes</label>
-            <input type="text" id="notes" required="true">
+            <textarea rows="5" id="notes" name="notes" required="true"></textarea>
           </div>
         </div>
 

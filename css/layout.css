@@ -3,7 +3,9 @@
 }
 
 header {
-  padding-left: 1.5rem;
+  background-color: #562b81;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .container {
@@ -15,7 +17,6 @@ header {
 .row {
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem 0;
 }
 
 .column-full,
@@ -28,19 +29,16 @@ header {
     max-width: 900px;
   }
 
+  header {
+    padding-left: 1.5rem;
+  }
+
   .column-full,
   .column-half {
     padding: 0 0.75rem;
   }
 
   .column-half {
-    width: 50%;
-  }
-}
-
-@media screen and (width > 50%) {
-  .title,
-  .photo {
     width: 50%;
   }
 }
@@ -53,11 +51,22 @@ header {
   flex-direction: column;
 }
 
+.title,
+.url,
+.notes,
+.save {
+  padding-top: 1.5rem;
+}
+
+label {
+  padding-bottom: 0.5rem;
+}
+
 .save {
   display: flex;
   justify-content: end;
 }
 
-label {
-  padding-bottom: 0.5rem;
+h4 {
+  margin: 0;
 }
