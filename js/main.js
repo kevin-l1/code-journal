@@ -18,18 +18,10 @@ function submitContent(event) {
     url: $urlValue,
     notes: $notesValue
   };
-  // console.log(data.nextEntryId);
-  // console.log(data.entries);
-  // console.log($formContent.entryId);
   data.entries.push($formContent);
   data.nextEntryId++;
-  // console.log(data.nextEntryId);
-  // console.log(data.entries);
-  // console.log($formContent.entryId);
   $form.reset();
   $img.src = 'images/placeholder-image-square.jpg';
 }
 
 $form.addEventListener('submit', submitContent);
-
-// https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png
