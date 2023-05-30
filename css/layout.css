@@ -3,9 +3,11 @@
 }
 
 header {
-  background-color: #562b81;
   padding: 1rem 0;
-  margin-bottom: 1.5rem;
+}
+
+.new-entry {
+  margin: 1rem 0;
 }
 
 .container {
@@ -33,6 +35,10 @@ header {
     padding-left: 1.5rem;
   }
 
+  .new-entry {
+    padding-left: 0.7rem;
+  }
+
   .column-full,
   .column-half {
     padding: 0 0.75rem;
@@ -51,11 +57,12 @@ header {
   flex-direction: column;
 }
 
+.photo,
 .title,
 .url,
 .notes,
 .save {
-  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 label {
@@ -67,6 +74,7 @@ label {
   justify-content: end;
 }
 
+h1,
 h4 {
   margin: 0;
 }
