@@ -6,7 +6,8 @@ header {
   padding: 1rem 0;
 }
 
-.new-entry {
+.new-entry,
+.entries-header {
   margin: 1rem 0;
 }
 
@@ -89,5 +90,9 @@ li,
 }
 
 .list-container {
-  padding: 1rem 0;
+  padding-bottom: 1rem;
+}
+
+.row.entries-header {
+  justify-content: space-between;
 }
