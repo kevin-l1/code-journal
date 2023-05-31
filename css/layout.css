@@ -35,10 +35,6 @@ header {
     padding-left: 1.5rem;
   }
 
-  .new-entry {
-    padding-left: 0.7rem;
-  }
-
   .column-full,
   .column-half {
     padding: 0 0.75rem;
@@ -85,7 +81,13 @@ ul {
 }
 
 ul,
-li {
+li,
+.entry-name,
+.entry-notes {
   margin: 0;
+  padding: 0;
+}
+
+.list-container {
   padding: 1rem 0;
 }

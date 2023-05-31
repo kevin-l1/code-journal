@@ -37,8 +37,9 @@ function renderEntry(entry) {
   const $p = document.createElement('p');
 
   $h1.innerHTML = entry.title;
-  $liNotes.innerHTML = entry.notes;
+  $p.innerHTML = entry.notes;
 
+  $ulContainer.setAttribute('class', 'list-container');
   $liPic.setAttribute('class', 'column-full column-half');
   $liTitle.setAttribute('class', 'column-full column-half');
   $pic.setAttribute('src', entry.url);
@@ -57,13 +58,23 @@ function renderEntry(entry) {
   return $ulContainer;
 }
 
-const $row = document.querySelector('.saved-entry');
+const $ul = document.querySelector('.saved-entry');
 
 document.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < data.entries.length; i++) {
-    $row.append(renderEntry(data.entries[i]));
+    $ul.append(renderEntry(data.entries[i]));
+    toggleNoEntries();
   }
 });
+
+function toggleNoEntries() {
+  const $noEntries = document.querySelector('.no-entries');
+  if (data.entries.length > 1) {
+    $noEntries.setAttribute('class', 'no-entries hidden');
+  } else {
+    $noEntries.setAttribute('class', 'no-entries');
+  }
+}
 
 // https://static1.srcdn.com/wordpress/wp-content/uploads/2023/03/honkai-star-rail-kafka-how-to-get.jpg
 // http://localhost:5500/index.html

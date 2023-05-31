@@ -31,7 +31,15 @@ h4 {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+.entry-name {
+  font-size: 1.8rem;
+}
+
+.entry-notes {
+  font-size: 1.3rem;
 }
 
 label {
@@ -53,6 +61,5 @@ li {
 }
 
 img {
-  object-fit: contain;
   max-width: 100%;
 }
