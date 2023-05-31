@@ -22,6 +22,14 @@ function submitContent(event) {
   data.nextEntryId++;
   $form.reset();
   $img.src = 'images/placeholder-image-square.jpg';
+
+  renderEntry(formContent);
+
+  viewSwap('entries');
+
+  if (data.entries.length > 0) {
+    toggleNoEntries();
+  }
 }
 
 $form.addEventListener('submit', submitContent);
@@ -36,8 +44,8 @@ function renderEntry(entry) {
   const $h1 = document.createElement('h1');
   const $p = document.createElement('p');
 
-  $h1.innerHTML = entry.title;
-  $p.innerHTML = entry.notes;
+  $h1.textContent = entry.title;
+  $p.textContent = entry.notes;
 
   $ulContainer.setAttribute('class', 'list-container');
   $liPic.setAttribute('class', 'column-full column-half');
@@ -58,23 +66,44 @@ function renderEntry(entry) {
   return $ulContainer;
 }
 
-const $ul = document.querySelector('.saved-entry');
+const $savedEntries = document.querySelector('.saved-entry');
 
 document.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < data.entries.length; i++) {
-    $ul.append(renderEntry(data.entries[i]));
-    toggleNoEntries();
+    $savedEntries.append(renderEntry(data.entries[i]));
+
+    if (data.entries.length > 0) {
+      toggleNoEntries();
+    }
   }
 });
 
 function toggleNoEntries() {
   const $noEntries = document.querySelector('.no-entries');
-  if (data.entries.length > 1) {
-    $noEntries.setAttribute('class', 'no-entries hidden');
-  } else {
-    $noEntries.setAttribute('class', 'no-entries');
+  $noEntries.setAttribute('class', 'no-entries hidden');
+}
+
+const $tabEntries = document.querySelector('.entries');
+const $tabEntryForm = document.querySelector('.entry-form');
+const $entries = document.querySelector('[data-view="entries"]');
+const $entryForm = document.querySelector('[data-view="entry-form"]');
+
+function viewSwap(event) {
+  if (event === 'entries') {
+    $entryForm.setAttribute('class', 'hidden');
+  } else if (event.target.matches('.entries')) {
+    $entries.setAttribute('class', 'active');
+    $entryForm.setAttribute('class', 'hidden');
+    data.view = 'entries';
+  } else if (event.target.matches('.entry-form')) {
+    $entryForm.setAttribute('class', 'active');
+    $entries.setAttribute('class', 'hidden');
+    data.view = 'entry-form';
   }
 }
+
+$tabEntries.addEventListener('click', viewSwap);
+$tabEntryForm.addEventListener('click', viewSwap);
 
 // https://static1.srcdn.com/wordpress/wp-content/uploads/2023/03/honkai-star-rail-kafka-how-to-get.jpg
 // http://localhost:5500/index.html
