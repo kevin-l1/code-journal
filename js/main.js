@@ -107,10 +107,8 @@ function viewSwap(viewName) {
 
 $tabEntries.addEventListener('click', () => {
   viewSwap('entries');
-  data.view = 'entries';
 });
 
 $tabEntryForm.addEventListener('click', () => {
   viewSwap('entry-form');
-  data.view = 'entry-form';
 });
