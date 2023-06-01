@@ -25,7 +25,16 @@ p {
   font-family: "Proza Libre", sans-serif;
 }
 
+p.entries {
+  font-size: 0.8rem;
+}
+
 h4 {
+  font-weight: 300;
+  color: white;
+}
+
+.entries {
   font-weight: 300;
   color: white;
 }
@@ -46,7 +55,8 @@ label {
   font-weight: bold;
 }
 
-.submit {
+.submit,
+.entry-form {
   border: none;
   color: white;
   background-color: #562b81;

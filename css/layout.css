@@ -36,6 +36,11 @@ header {
     padding-left: 1.5rem;
   }
 
+  .new-entry,
+  .entries-header {
+    margin-left: 0.5rem;
+  }
+
   .column-full,
   .column-half {
     padding: 0 0.75rem;
@@ -95,4 +100,13 @@ li,
 
 .row.entries-header {
   justify-content: space-between;
+}
+
+.container.header {
+  display: flex;
+  align-items: center;
+}
+
+p.entries {
+  margin-left: 3rem;
 }

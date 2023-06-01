@@ -119,6 +119,3 @@ function viewSwap(event) {
 
 $tabEntries.addEventListener('click', viewSwap);
 $tabEntryForm.addEventListener('click', viewSwap);
-
-// https://static1.srcdn.com/wordpress/wp-content/uploads/2023/03/honkai-star-rail-kafka-how-to-get.jpg
-// http://localhost:5500/index.html
