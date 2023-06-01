@@ -35,36 +35,39 @@ function submitContent(event) {
 $form.addEventListener('submit', submitContent);
 
 function renderEntry(entry) {
-  const $ulContainer = document.createElement('ul');
-  const $liPic = document.createElement('li');
-  const $liTitle = document.createElement('li');
-  const $liNotes = document.createElement('li');
-  const $liUl = document.createElement('ul');
+  const $list = document.createElement('li');
   const $pic = document.createElement('img');
+  const $textDiv = document.createElement('div');
+  const $headerDiv = document.createElement('div');
   const $h1 = document.createElement('h1');
   const $p = document.createElement('p');
+  const $edit = document.createElement('i');
 
   $h1.textContent = entry.title;
   $p.textContent = entry.notes;
 
-  $ulContainer.setAttribute('class', 'list-container');
-  $liPic.setAttribute('class', 'column-full column-half');
-  $liTitle.setAttribute('class', 'column-full column-half');
+  $list.setAttribute('class', 'list-container');
+  $list.setAttribute('dataset', 'entry-id');
+  $list.dataset.entryId = entry.entryId;
+
+  $textDiv.setAttribute('class', 'column-full column-half');
+  $pic.setAttribute('class', 'picture column-full column-half');
   $pic.setAttribute('src', entry.url);
-  $pic.setAttribute('class', 'entry-pic');
   $pic.setAttribute('alt', 'Picture');
+  $headerDiv.setAttribute('class', 'text-header');
   $h1.setAttribute('class', 'entry-name');
   $p.setAttribute('class', 'entry-notes');
+  $edit.setAttribute('class', 'fa fa-pencil');
+  $edit.setAttribute('alt', 'Pencil');
 
-  $ulContainer.appendChild($liPic);
-  $ulContainer.appendChild($liTitle);
-  $liPic.appendChild($pic);
-  $liTitle.appendChild($h1);
-  $liTitle.appendChild($liUl);
-  $liUl.appendChild($liNotes);
-  $liNotes.appendChild($p);
+  $list.appendChild($pic);
+  $list.appendChild($textDiv);
+  $textDiv.appendChild($headerDiv);
+  $textDiv.appendChild($p);
+  $headerDiv.appendChild($h1);
+  $headerDiv.appendChild($edit);
 
-  return $ulContainer;
+  return $list;
 }
 
 const $savedEntries = document.querySelector('.saved-entry');
@@ -111,4 +114,24 @@ $tabEntries.addEventListener('click', () => {
 
 $tabEntryForm.addEventListener('click', () => {
   viewSwap('entry-form');
+});
+
+$savedEntries.addEventListener('click', () => {
+  if (event.target.className === 'fa fa-pencil') {
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === event.target.closest('$li.dataset.entryId')) {
+        viewSwap('entry-form');
+        data.editing = data.entries[i];
+        // console.log(data.editing);
+        // console.log(event.target.dataset.entryId);
+
+        $form.elements.title.value = data.editing.title;
+        $form.elements.url.value = data.editing.url;
+        $form.elements.notes.value = data.editing.notes;
+        const $newEntry = document.querySelector('.newEntry');
+        $newEntry.textContent = 'New Entry';
+        return;
+      }
+    }
+  }
 });

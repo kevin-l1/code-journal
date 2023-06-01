@@ -67,8 +67,15 @@ label {
 ul,
 li {
   list-style: none;
+  justify-content: center;
 }
 
 img {
-  max-width: 100%;
+  object-fit: contain;
+  border-radius: 5%;
+}
+
+button,
+.fa.fa-pencil:hover {
+  cursor: pointer;
 }

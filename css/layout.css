@@ -17,6 +17,11 @@ header {
   padding: 0 1.5rem;
 }
 
+.container.header {
+  display: flex;
+  align-items: center;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -59,11 +64,12 @@ header {
   flex-direction: column;
 }
 
-.photo,
+img,
 .title,
 .url,
 .notes,
-.save {
+.save,
+.text-header {
   padding-bottom: 1.5rem;
 }
 
@@ -81,9 +87,11 @@ h4 {
   margin: 0;
 }
 
-ul {
+.text-header {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 ul,
@@ -94,24 +102,16 @@ li,
   padding: 0;
 }
 
-.list-container {
-  padding-bottom: 1rem;
+li {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 1.5rem;
 }
 
 .row.entries-header {
   justify-content: space-between;
 }
 
-.container.header {
-  display: flex;
-  align-items: center;
-}
-
 a.entries {
   margin-left: 3rem;
-}
-
-.saved-entry {
-  display: flex;
-  justify-content: center;
 }
