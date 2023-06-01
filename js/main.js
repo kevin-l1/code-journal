@@ -119,11 +119,9 @@ $tabEntryForm.addEventListener('click', () => {
 $savedEntries.addEventListener('click', () => {
   if (event.target.className === 'fa fa-pencil') {
     for (let i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].entryId === event.target.closest('$li.dataset.entryId')) {
+      if (data.entries[i].entryId === parseInt(event.target.closest('li').dataset.entryId)) {
         viewSwap('entry-form');
         data.editing = data.entries[i];
-        // console.log(data.editing);
-        // console.log(event.target.dataset.entryId);
 
         $form.elements.title.value = data.editing.title;
         $form.elements.url.value = data.editing.url;
