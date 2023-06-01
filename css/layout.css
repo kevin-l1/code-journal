@@ -6,7 +6,8 @@ header {
   padding: 1rem 0;
 }
 
-.new-entry {
+.new-entry,
+.entries-header {
   margin: 1rem 0;
 }
 
@@ -35,8 +36,9 @@ header {
     padding-left: 1.5rem;
   }
 
-  .new-entry {
-    padding-left: 0.7rem;
+  .new-entry,
+  .entries-header {
+    margin-left: 0.5rem;
   }
 
   .column-full,
@@ -77,4 +79,39 @@ label {
 h1,
 h4 {
   margin: 0;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul,
+li,
+.entry-name,
+.entry-notes {
+  margin: 0;
+  padding: 0;
+}
+
+.list-container {
+  padding-bottom: 1rem;
+}
+
+.row.entries-header {
+  justify-content: space-between;
+}
+
+.container.header {
+  display: flex;
+  align-items: center;
+}
+
+a.entries {
+  margin-left: 3rem;
+}
+
+.saved-entry {
+  display: flex;
+  justify-content: center;
 }

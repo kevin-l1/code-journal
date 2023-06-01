@@ -20,8 +20,17 @@ textarea:focus {
 
 h1,
 h4,
-label {
+label,
+p,
+a {
   font-family: "Proza Libre", sans-serif;
+}
+
+a.entries {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: white;
+  text-decoration: none;
 }
 
 h4 {
@@ -30,18 +39,36 @@ h4 {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+.entry-name {
+  font-size: 1.8rem;
+}
+
+.entry-notes {
+  font-size: 1.3rem;
 }
 
 label {
   font-weight: bold;
 }
 
-.submit {
+.submit,
+.entry-form {
   border: none;
   color: white;
   background-color: #562b81;
   border-radius: 5px;
   width: 4rem;
   height: 2rem;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
 }
