@@ -20,7 +20,7 @@ function submitContent(event) {
   };
   data.entries.unshift(formContent);
   data.nextEntryId++;
-
+  $form.reset();
   $img.src = 'images/placeholder-image-square.jpg';
 
   $savedEntries.prepend(renderEntry(formContent));
@@ -30,8 +30,6 @@ function submitContent(event) {
   if (data.entries.length > 0) {
     toggleNoEntries();
   }
-
-  $form.reset();
 }
 
 $form.addEventListener('submit', submitContent);
@@ -54,6 +52,7 @@ function renderEntry(entry) {
   $liTitle.setAttribute('class', 'column-full column-half');
   $pic.setAttribute('src', entry.url);
   $pic.setAttribute('class', 'entry-pic');
+  $pic.setAttribute('alt', 'Picture');
   $h1.setAttribute('class', 'entry-name');
   $p.setAttribute('class', 'entry-notes');
 
@@ -73,17 +72,18 @@ const $savedEntries = document.querySelector('.saved-entry');
 document.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < data.entries.length; i++) {
     $savedEntries.append(renderEntry(data.entries[i]));
+  }
 
-    viewSwap(data.view);
+  viewSwap(data.view);
 
-    if (data.entries.length > 0) {
-      toggleNoEntries();
-    }
+  if (data.entries.length > 0) {
+    toggleNoEntries();
   }
 });
 
+const $noEntries = document.querySelector('.no-entries');
+
 function toggleNoEntries() {
-  const $noEntries = document.querySelector('.no-entries');
   $noEntries.setAttribute('class', 'no-entries hidden');
 }
 
@@ -92,30 +92,25 @@ const $tabEntryForm = document.querySelector('.entry-form');
 const $entries = document.querySelector('[data-view="entries"]');
 const $entryForm = document.querySelector('[data-view="entry-form"]');
 
-function viewSwap(event) {
-  if (event === 'entries') {
+function viewSwap(viewName) {
+  if (viewName === 'entries') {
     $entryForm.setAttribute('class', 'hidden');
     $entries.setAttribute('class', 'active');
     data.view = 'entries';
-    return;
   }
-  if (event === 'entry-form') {
+  if (viewName === 'entry-form') {
     $entries.setAttribute('class', 'hidden');
     $entryForm.setAttribute('class', 'active');
-    data.view = 'entry-form';
-    return;
-  }
-
-  if (event.target.matches('.entries')) {
-    $entries.setAttribute('class', 'active');
-    $entryForm.setAttribute('class', 'hidden');
-    data.view = 'entries';
-  } else if (event.target.matches('.entry-form')) {
-    $entryForm.setAttribute('class', 'active');
-    $entries.setAttribute('class', 'hidden');
     data.view = 'entry-form';
   }
 }
 
-$tabEntries.addEventListener('click', viewSwap);
-$tabEntryForm.addEventListener('click', viewSwap);
+$tabEntries.addEventListener('click', () => {
+  viewSwap('entries');
+  data.view = 'entries';
+});
+
+$tabEntryForm.addEventListener('click', () => {
+  viewSwap('entry-form');
+  data.view = 'entry-form';
+});

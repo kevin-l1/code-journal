@@ -107,6 +107,11 @@ li,
   align-items: center;
 }
 
-p.entries {
+a.entries {
   margin-left: 3rem;
+}
+
+.saved-entry {
+  display: flex;
+  justify-content: center;
 }
