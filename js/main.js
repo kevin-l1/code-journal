@@ -9,28 +9,42 @@ const $form = document.querySelector('#form');
 
 function submitContent(event) {
   event.preventDefault();
+  let formContent = {};
   const $titleValue = $form.elements.title.value;
   const $urlValue = $form.elements.url.value;
   const $notesValue = $form.elements.notes.value;
-  const formContent = {
-    entryId: data.nextEntryId,
-    title: $titleValue,
-    url: $urlValue,
-    notes: $notesValue
-  };
-  data.entries.unshift(formContent);
-  data.nextEntryId++;
-  $form.reset();
-  $img.src = 'images/placeholder-image-square.jpg';
-
-  $savedEntries.prepend(renderEntry(formContent));
-
-  viewSwap('entries');
-
-  if (data.entries.length > 0) {
-    toggleNoEntries();
+  if (data.editing === null) {
+    formContent = {
+      entryId: data.nextEntryId,
+      title: $titleValue,
+      url: $urlValue,
+      notes: $notesValue
+    };
+    data.entries.unshift(formContent);
+    data.nextEntryId++;
+    $savedEntries.prepend(renderEntry(formContent));
+    $form.reset();
+    $img.src = 'images/placeholder-image-square.jpg';
+    viewSwap('entries');
+    if (data.entries.length !== 0) {
+      toggleNoEntries();
+    }
+  } else {
+    formContent = {
+      entryId: data.editing.entryId,
+      title: $titleValue,
+      url: $urlValue,
+      notes: $notesValue
+    };
+    data.entries[indexNum] = formContent;
+    $closest.replaceWith(renderEntry(data.entries[indexNum]));
+    $newEntry.textContent = 'New Entry';
+    $form.reset();
+    viewSwap('entries');
+    data.editing.reset();
   }
 }
+$form.addEventListener('submit', submitContent);
 
 $form.addEventListener('submit', submitContent);
 
@@ -116,19 +130,24 @@ $tabEntryForm.addEventListener('click', () => {
   viewSwap('entry-form');
 });
 
+const $newEntry = document.querySelector('.newEntry');
+let $closest;
+let indexNum;
+
 $savedEntries.addEventListener('click', () => {
   if (event.target.className === 'fa fa-pencil') {
-    for (let i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].entryId === parseInt(event.target.closest('li').dataset.entryId)) {
-        viewSwap('entry-form');
-        data.editing = data.entries[i];
+    for (indexNum = 0; indexNum < data.entries.length; indexNum++) {
+      if (data.entries[indexNum].entryId === parseInt(event.target.closest('li').dataset.entryId)) {
+        $closest = event.target.closest('li');
 
+        data.editing = data.entries[indexNum];
         $form.elements.title.value = data.editing.title;
         $form.elements.url.value = data.editing.url;
         $form.elements.notes.value = data.editing.notes;
-        const $newEntry = document.querySelector('.newEntry');
-        $newEntry.textContent = 'New Entry';
-        return;
+        $img.src = $url.value;
+        $newEntry.textContent = 'Edit Entry';
+
+        viewSwap('entry-form');
       }
     }
   }

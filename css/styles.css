@@ -22,7 +22,8 @@ h1,
 h4,
 label,
 p,
-a {
+a,
+li {
   font-family: "Proza Libre", sans-serif;
 }
 
@@ -73,6 +74,11 @@ li {
 img {
   object-fit: contain;
   border-radius: 5%;
+}
+
+.fa.fa-pencil {
+  color: #562b81;
+  font-size: 1.5rem;
 }
 
 button,
