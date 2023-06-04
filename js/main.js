@@ -41,7 +41,7 @@ function submitContent(event) {
     $newEntry.textContent = 'New Entry';
     $form.reset();
     viewSwap('entries');
-    data.editing.reset();
+    data.editing = null;
   }
 }
 $form.addEventListener('submit', submitContent);
