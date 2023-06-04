@@ -141,6 +141,7 @@ $savedEntries.addEventListener('click', () => {
         $closest = event.target.closest('li');
 
         data.editing = data.entries[indexNum];
+
         $form.elements.title.value = data.editing.title;
         $form.elements.url.value = data.editing.url;
         $form.elements.notes.value = data.editing.notes;
@@ -148,6 +149,7 @@ $savedEntries.addEventListener('click', () => {
         $newEntry.textContent = 'Edit Entry';
 
         viewSwap('entry-form');
+        return;
       }
     }
   }
