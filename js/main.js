@@ -132,6 +132,8 @@ $tabEntries.addEventListener('click', () => {
 
 $tabEntryForm.addEventListener('click', () => {
   viewSwap('entry-form');
+  $form.reset();
+  $img.src = 'images/placeholder-image-square.jpg';
   $delete.classList.add('hidden');
   $saveRow.classList.remove('delete');
 });
@@ -167,4 +169,30 @@ $savedEntries.addEventListener('click', () => {
   }
 });
 
-// const $deleteEntry = document.querySelector('.delete-entry');
+const $modalContainer = document.querySelector('.modal-container');
+const $deleteEntry = document.querySelector('.delete-entry');
+const $cancel = document.querySelector('.cancel');
+const $confirm = document.querySelector('.confirm');
+
+$deleteEntry.addEventListener('click', () => {
+  $modalContainer.classList.remove('hidden');
+});
+
+$cancel.addEventListener('click', () => {
+  $modalContainer.classList.add('hidden');
+});
+
+$confirm.addEventListener('click', () => {
+  $modalContainer.classList.add('hidden');
+
+  if (data.entries.length > 0) {
+    toggleNoEntries();
+  }
+
+  data.entries.splice(indexNum, 1);
+  $closest.remove();
+
+  data.editing = null;
+
+  viewSwap('entries');
+});
