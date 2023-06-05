@@ -85,3 +85,36 @@ button,
 .fa.fa-pencil:hover {
   cursor: pointer;
 }
+
+.delete-entry {
+  border: none;
+  text-decoration: underline;
+  color: #dc2626;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0.2rem 0.5rem 0 #00000040;
+}
+
+.question {
+  font-weight: bold;
+}
+
+.cancel,
+.confirm {
+  height: 2.5rem;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.cancel {
+  background-color: #b6b6b6;
+}
+
+.confirm {
+  background-color: #dc2626;
+  color: white;
+}

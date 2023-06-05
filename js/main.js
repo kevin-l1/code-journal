@@ -43,6 +43,8 @@ function submitContent(event) {
     viewSwap('entries');
     data.editing = null;
   }
+  $delete.classList.add('hidden');
+  $saveRow.classList.remove('delete');
 }
 $form.addEventListener('submit', submitContent);
 
@@ -124,13 +126,19 @@ function viewSwap(viewName) {
 
 $tabEntries.addEventListener('click', () => {
   viewSwap('entries');
+  $delete.classList.add('hidden');
+  $saveRow.classList.remove('delete');
 });
 
 $tabEntryForm.addEventListener('click', () => {
   viewSwap('entry-form');
+  $delete.classList.add('hidden');
+  $saveRow.classList.remove('delete');
 });
 
 const $newEntry = document.querySelector('.newEntry');
+const $delete = document.querySelector('.delete-entry.hidden');
+const $saveRow = document.querySelector('.save');
 let $closest;
 let indexNum;
 
@@ -148,9 +156,15 @@ $savedEntries.addEventListener('click', () => {
         $img.src = $url.value;
         $newEntry.textContent = 'Edit Entry';
 
+        $delete.classList.remove('hidden');
+        $saveRow.classList.add('delete');
+
         viewSwap('entry-form');
+
         return;
       }
     }
   }
 });
+
+// const $deleteEntry = document.querySelector('.delete-entry');
