@@ -43,6 +43,8 @@ function submitContent(event) {
     viewSwap('entries');
     data.editing = null;
   }
+  $delete.classList.add('hidden');
+  $saveRow.classList.remove('delete');
 }
 $form.addEventListener('submit', submitContent);
 
@@ -124,13 +126,21 @@ function viewSwap(viewName) {
 
 $tabEntries.addEventListener('click', () => {
   viewSwap('entries');
+  $delete.classList.add('hidden');
+  $saveRow.classList.remove('delete');
 });
 
 $tabEntryForm.addEventListener('click', () => {
   viewSwap('entry-form');
+  $form.reset();
+  $img.src = 'images/placeholder-image-square.jpg';
+  $delete.classList.add('hidden');
+  $saveRow.classList.remove('delete');
 });
 
 const $newEntry = document.querySelector('.newEntry');
+const $delete = document.querySelector('.delete-entry.hidden');
+const $saveRow = document.querySelector('.save');
 let $closest;
 let indexNum;
 
@@ -148,9 +158,41 @@ $savedEntries.addEventListener('click', () => {
         $img.src = $url.value;
         $newEntry.textContent = 'Edit Entry';
 
+        $delete.classList.remove('hidden');
+        $saveRow.classList.add('delete');
+
         viewSwap('entry-form');
+
         return;
       }
     }
   }
+});
+
+const $modalContainer = document.querySelector('.modal-container');
+const $deleteEntry = document.querySelector('.delete-entry');
+const $cancel = document.querySelector('.cancel');
+const $confirm = document.querySelector('.confirm');
+
+$deleteEntry.addEventListener('click', () => {
+  $modalContainer.classList.remove('hidden');
+});
+
+$cancel.addEventListener('click', () => {
+  $modalContainer.classList.add('hidden');
+});
+
+$confirm.addEventListener('click', () => {
+  $modalContainer.classList.add('hidden');
+
+  if (data.entries.length > 0) {
+    toggleNoEntries();
+  }
+
+  data.entries.splice(indexNum, 1);
+  $closest.remove();
+
+  data.editing = null;
+
+  viewSwap('entries');
 });

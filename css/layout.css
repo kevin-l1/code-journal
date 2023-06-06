@@ -68,7 +68,6 @@ img,
 .title,
 .url,
 .notes,
-.save,
 .text-header {
   padding-bottom: 1.5rem;
 }
@@ -114,4 +113,35 @@ li {
 
 a.entries {
   margin-left: 3rem;
+}
+
+.delete {
+  justify-content: space-between;
+}
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.confirmation-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.question,
+.confirmation-row {
+  padding: 1rem 1rem 0;
 }

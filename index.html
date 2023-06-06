@@ -52,7 +52,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="save column-full">
+          <div class="column-full save">
+            <button class="delete-entry hidden" type="button">Delete Entry</button>
             <button class="submit" type="submit">SAVE</button>
           </div>
         </div>
@@ -69,6 +70,19 @@
       </ul>
     </div>
   </main>
+
+  <section class="modal-container hidden">
+    <div class="modal">
+      <div class="question">
+        <p>Are you sure you want to delete this entry?</p>
+      </div>
+      <div class="confirmation-row">
+        <button class="cancel">CANCEL</button>
+        <button class="confirm">CONFIRM</button>
+      </div>
+    </div>
+  </section>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
